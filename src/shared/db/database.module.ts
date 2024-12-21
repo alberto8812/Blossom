@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { envs } from 'src/config/env';
+import { characters } from './domain/entities';
 
 
 @Module({
@@ -17,7 +18,7 @@ import { envs } from 'src/config/env';
         username: envs.username,
         password: envs.password,
         database: envs.database,
-        models: [],  // Aquí incluyes todas las entidades que utilizarás
+        models: [characters],  // Aquí incluyes todas las entidades que utilizarás
         autoLoadModels: true,
         synchronize: true,  // Establece esto en `false` para producción
       }),
