@@ -10,6 +10,7 @@ interface EnvConfig {
     DB_USERNAME: string;
     DB_PASSWORD: string;
     DB_NAME: string;
+    API_URL: string
 
 }
 
@@ -20,6 +21,7 @@ const ensSchema = joi.object({
     DB_USERNAME: joi.string().required(),
     DB_PASSWORD: joi.string().required(),
     DB_NAME: joi.string().required(),
+    API_URL: joi.string().required(),
 })
     .unknown(true) // allow other keys
 
@@ -38,5 +40,6 @@ export const envs = {
     username: envVars.DB_USERNAME,
     password: envVars.DB_PASSWORD,
     database: envVars.DB_NAME,
+    apiUrl: envVars.API_URL
 
 }

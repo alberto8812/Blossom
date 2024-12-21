@@ -1,3 +1,4 @@
+export * from "./adapters/http/http.service.adapter";
 
 
 

@@ -74,6 +74,9 @@ type Mutation {
   createGender(createCharacterInput: SaveGenderRepositoryModeInput!): GenderRepositoryModelObj!
   updateGender(updateGenderInput: UpdateGenderRepositoryModeInput!): GenderRepositoryModelObj!
   removeGender(id: String!): GenderRepositoryModelObj!
+
+  """Ejecuta la construccion de la base de datos"""
+  executeSeed: Boolean!
 }
 
 input SaveCharacterRepositoryModeInput {

@@ -9,6 +9,7 @@ import { DatabaseModule } from './db/database.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { OriginModule } from './origin/origin.module';
 import { GenderModule } from './gender/gender.module';
+import { SeedModule } from './seed/seed.module';
 
 
 
@@ -25,7 +26,8 @@ import { GenderModule } from './gender/gender.module';
     DatabaseModule,
     CharacterModule,
     OriginModule,
-    GenderModule
+    GenderModule,
+    SeedModule
   ],
   controllers: [],
   providers: [],
