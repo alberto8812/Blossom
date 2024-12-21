@@ -5,7 +5,6 @@ import { UseCaseCharacterService } from '../aplication/character-use-case.interf
 import { CharacterService } from '../aplication/character-use-case.service';
 import { CharacterRepositoryModelObj } from './graphql/output/character.type';
 import { SaveCharacterRepositoryModeInput, UpdateCharacterRepositoryModeInput } from './graphql/input/create-character.input';
-import { basicResponseApiOutput } from 'src/common';
 import { CharacterResponseObj, CharactersResponseObj } from './graphql/output/character-response.type';
 
 

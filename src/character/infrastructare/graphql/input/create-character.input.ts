@@ -9,6 +9,9 @@ export class SaveCharacterRepositoryModeInput {
 
     @Field()
     img: string;
+
+    @Field()
+    species: string;
 }
 
 @InputType()

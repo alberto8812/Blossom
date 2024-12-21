@@ -2,6 +2,7 @@ export interface ICharactersRepositoryDto {
     name: string
     status: string
     img: string
+    species: string
 
 }
 

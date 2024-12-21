@@ -3,6 +3,7 @@ export interface CharacterRepositoryModel {
     name: string;
     status: string;
     img: string;
+    species: string;
 }
 
 export type ISaveCharacterRepositoryModel = Omit<CharacterRepositoryModel, 'id'>

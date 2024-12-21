@@ -12,5 +12,8 @@ export class CharacterRepositoryModelObj {
     status: string;
 
     @Field()
+    species: string;
+
+    @Field()
     img: string;
 }

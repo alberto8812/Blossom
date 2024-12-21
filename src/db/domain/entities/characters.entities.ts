@@ -27,6 +27,12 @@ export class characters extends Model<characters> {
     img: string;
 
     @Column({
+        type: DataType.TEXT,
+        allowNull: true,
+    })
+    species: string;
+
+    @Column({
         type: DataType.DATE,
         defaultValue: DataType.NOW,
     })

@@ -6,6 +6,7 @@ type CharacterRepositoryModelObj {
   id: ID!
   name: String!
   status: String!
+  species: String!
   img: String!
 }
 
@@ -36,11 +37,13 @@ input SaveCharacterRepositoryModeInput {
   name: String!
   status: String!
   img: String!
+  species: String!
 }
 
 input UpdateCharacterRepositoryModeInput {
   name: String!
   status: String!
   img: String!
+  species: String!
   id: String!
 }
