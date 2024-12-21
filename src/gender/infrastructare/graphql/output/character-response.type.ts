@@ -1,20 +1,20 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { basicResponseApiOutput } from "src/common";
-import { CharacterRepositoryModelObj } from "./character.type";
-import { object } from "joi";
+import { GenderRepositoryModelObj } from "./character.type";
+
 
 @ObjectType()
-export class CharactersResponseObj extends basicResponseApiOutput {
+export class GendersResponseObj extends basicResponseApiOutput {
 
-    @Field(() => [CharacterRepositoryModelObj], { defaultValue: [] })
-    data: CharacterRepositoryModelObj[];
+    @Field(() => [GenderRepositoryModelObj], { defaultValue: [] })
+    data: GenderRepositoryModelObj[];
 
 }
 
 @ObjectType()
-export class CharacterResponseObj extends basicResponseApiOutput {
+export class GenderResponseObj extends basicResponseApiOutput {
 
-    @Field(() => CharacterRepositoryModelObj, { nullable: true })
-    data: CharacterRepositoryModelObj;
+    @Field(() => GenderRepositoryModelObj, { nullable: true })
+    data: GenderRepositoryModelObj;
 
 }

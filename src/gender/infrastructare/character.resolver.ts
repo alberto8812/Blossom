@@ -5,7 +5,7 @@ import { UseCaseGenderService } from '../aplication/character-use-case.interface
 import { GenderService } from '../aplication/character-use-case.service';
 import { GenderRepositoryModelObj } from './graphql/output/character.type';
 import { SaveGenderRepositoryModeInput, UpdateGenderRepositoryModeInput } from './graphql/input/create-character.input';
-import { CharacterResponseObj, CharactersResponseObj } from './graphql/output/character-response.type';
+import { GenderResponseObj, GendersResponseObj } from './graphql/output/character-response.type';
 
 
 
@@ -20,12 +20,12 @@ export class CharacterResolver {
     return this.genderService.createGender(createCharacterInput);
   }
 
-  @Query(() => CharactersResponseObj, { name: 'get_all_gender' })
+  @Query(() => GendersResponseObj, { name: 'get_all_gender' })
   findAll() {
     return this.genderService.getAllGender();
   }
 
-  @Query(() => CharacterResponseObj, { name: 'get_one_genser' })
+  @Query(() => GenderResponseObj, { name: 'get_one_genser' })
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.genderService.getGenderById(id);
   }
