@@ -9,8 +9,6 @@ export class characters extends Model<characters> {
     })
     id: string;
 
-
-
     @Column({
         type: DataType.STRING(255),
         allowNull: false,

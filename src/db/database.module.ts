@@ -29,5 +29,4 @@ import { OrmBasicReportsRepository } from './domain/repository/charcters/orm-cha
   ],
   exports: [OrmBasicReportsRepository],
 })
-
 export class DatabaseModule { }

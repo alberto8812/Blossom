@@ -22,9 +22,17 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
         return this.charactersModel.findByPk(characterid);
     }
     async saveCharacter(newProduct: ICharactersRepositoryDto): Promise<{ [key: string]: string; }> {
-        const resp = await this.charactersModel.create(newProduct);
-        return {
-            message: "Character created"
+        console.log(newProduct);
+        try {
+            const resp = await this.charactersModel.create(newProduct);
+            return {
+                message: "Character created"
+            }
+        } catch (error) {
+            console.log(error);
+            return {
+                message: "Character not created"
+            }
         }
     }
     async updateCharacter(characterid: string, newProduct: ICharactersRepositoryDto): Promise<{ [key: string]: string; }> {

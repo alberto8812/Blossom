@@ -10,7 +10,8 @@ type CharacterRepositoryModelObj {
 }
 
 type Query {
-  character(id: String!): CharacterRepositoryModelObj!
+  get_all_character: [CharacterRepositoryModelObj!]!
+  get_one_character(id: String!): CharacterRepositoryModelObj!
 }
 
 type Mutation {

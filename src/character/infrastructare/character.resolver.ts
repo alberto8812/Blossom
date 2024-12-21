@@ -14,27 +14,27 @@ export class CharacterResolver {
     @Inject(CharacterService) private characterService: UseCaseCharacterService,
   ) { }
 
-  @Mutation(() => CharacterRepositoryModelObj)
+  @Mutation(() => CharacterRepositoryModelObj, { name: 'createCharacter' })
   createCharacter(@Args('createCharacterInput') createCharacterInput: SaveCharacterRepositoryModeInput) {
     return this.characterService.createCharacter(createCharacterInput);
   }
 
-  @Query(() => [CharacterRepositoryModelObj], { name: 'character' })
+  @Query(() => [CharacterRepositoryModelObj], { name: 'get_all_character' })
   findAll() {
     return this.characterService.getAllCharacter();
   }
 
-  @Query(() => CharacterRepositoryModelObj, { name: 'character' })
+  @Query(() => CharacterRepositoryModelObj, { name: 'get_one_character' })
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.characterService.getCharacterById(id);
   }
 
-  @Mutation(() => CharacterRepositoryModelObj)
+  @Mutation(() => CharacterRepositoryModelObj, { name: 'updateCharacter' })
   updateCharacter(@Args('updateCharacterInput') updateCharacterInput: UpdateCharacterRepositoryModeInput) {
     return this.characterService.updateCharacterById(updateCharacterInput);
   }
 
-  @Mutation(() => CharacterRepositoryModelObj)
+  @Mutation(() => CharacterRepositoryModelObj, { name: 'removeCharacter' })
   removeCharacter(@Args('id', { type: () => String }) id: string) {
     return this.characterService.deleteCharacerById(id);
   }
