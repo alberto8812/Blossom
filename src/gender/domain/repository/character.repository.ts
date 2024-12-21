@@ -8,7 +8,7 @@ import { IOrmSpeciesRepository } from "src/db/domain/repository/species/orm-spec
 
 
 @Injectable()
-export class CharacterRepository implements CrudGenderRepository {
+export class GenderRepository implements CrudGenderRepository {
 
     constructor(
         @Inject(OrmSpeciesRepository)

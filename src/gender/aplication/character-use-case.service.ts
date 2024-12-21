@@ -1,50 +1,50 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IResponse, UseCaseCharacterService } from './character-use-case.interface';
-import { CharacterRepository } from '../domain/repository/character.repository';
-import { CrudCharacterRepository } from '../domain/repository/characert-repository.interface';
-import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from '../domain/model/characterRepositoryModel';
+import { IResponse, UseCaseGenderService } from './character-use-case.interface';
+import { GenderRepository } from '../domain/repository/character.repository';
+import { CrudGenderRepository } from '../domain/repository/characert-repository.interface';
+import { GenderRepositoryModel, ISaveGenderRepositoryModel } from '../domain/model/characterRepositoryModel';
 
 @Injectable()
-export class CharacterService implements UseCaseCharacterService {
+export class GenderService implements UseCaseGenderService {
   constructor(
-    @Inject(CharacterRepository) private characterRepository: CrudCharacterRepository
+    @Inject(GenderRepository) private GenderRepository: CrudGenderRepository
   ) {
 
   }
-  async updateCharacterById(updateCharcter: CharacterRepositoryModel): Promise<any> {
-    const character = await this.characterRepository.updateCharacter(updateCharcter);
+  async updateGenderById(updateCharcter: GenderRepositoryModel): Promise<any> {
+    const character = await this.GenderRepository.updateGender(updateCharcter);
     return {
       message: 'Character updated',
       code: 200,
       data: character
     }
   }
-  async createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<any> {
-    const character = await this.characterRepository.createCharacter(newCharacter);
+  async createGender(newCharacter: ISaveGenderRepositoryModel): Promise<any> {
+    const character = await this.GenderRepository.createGender(newCharacter);
     return {
       message: 'Character created',
       code: 200,
       data: character
     }
   }
-  async getAllCharacter(): Promise<IResponse<CharacterRepositoryModel>> {
-    const character = await this.characterRepository.getAllCharacter();
+  async getAllGender(): Promise<IResponse<GenderRepositoryModel>> {
+    const character = await this.GenderRepository.getAllGender();
     return {
       message: 'Character list',
       code: 200,
       data: character
     }
   }
-  async deleteCharacerById(employeeid: string): Promise<IResponse<any>> {
-    const character = await this.characterRepository.deleteCharacerById(employeeid);
+  async deleteGenderById(employeeid: string): Promise<IResponse<any>> {
+    const character = await this.GenderRepository.deleteGenderById(employeeid);
     return {
       message: 'Character deleted',
       code: 200,
       data: character
     }
   }
-  async getCharacterById(characterId: string): Promise<IResponse<CharacterRepositoryModel>> {
-    const character = await this.characterRepository.getCharacterById(characterId);
+  async getGenderById(characterId: string): Promise<IResponse<GenderRepositoryModel>> {
+    const character = await this.GenderRepository.getGenderById(characterId);
     console.log(character, 'character');
     return {
       message: 'Character found',
