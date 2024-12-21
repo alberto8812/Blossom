@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { envs } from 'src/config/env';
-import { characters, origins } from './domain/entities';
+import { characters, origins, species } from './domain/entities';
 import { OrmBasicReportsRepository } from './domain/repository/charcters/orm-characters.repositor';
 
 
@@ -20,12 +20,12 @@ import { OrmBasicReportsRepository } from './domain/repository/charcters/orm-cha
         username: envs.username,
         password: envs.password,
         database: envs.database,
-        models: [characters, origins],  // Aquí incluyes todas las entidades que utilizarás
+        models: [characters, origins, species],  // Aquí incluyes todas las entidades que utilizarás
         autoLoadModels: true,
         synchronize: true,  // Establece esto en `false` para producción
       }),
     }),
-    SequelizeModule.forFeature([characters, origins]),
+    SequelizeModule.forFeature([characters, origins, species]),
   ],
   exports: [OrmBasicReportsRepository],
 })
