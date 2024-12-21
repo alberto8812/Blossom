@@ -1,4 +1,4 @@
-import { GenderRepositoryModel, ISaveGenderRepositoryModel } from "../model/characterRepositoryModel";
+import { GenderRepositoryModel, ISaveGenderRepositoryModel } from "../model/genderRepositoryModel";
 
 export interface CrudGenderRepository {
     createGender(newGender: ISaveGenderRepositoryModel): Promise<{ [key: string]: string }>;

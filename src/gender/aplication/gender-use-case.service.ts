@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IResponse, UseCaseGenderService } from './character-use-case.interface';
-import { GenderRepository } from '../domain/repository/character.repository';
-import { CrudGenderRepository } from '../domain/repository/characert-repository.interface';
-import { GenderRepositoryModel, ISaveGenderRepositoryModel } from '../domain/model/characterRepositoryModel';
+import { IResponse, UseCaseGenderService } from './gender-use-case.interface';
+import { GenderRepository } from '../domain/repository/gender.repository';
+import { CrudGenderRepository } from '../domain/repository/gender-repository.interface';
+import { GenderRepositoryModel, ISaveGenderRepositoryModel } from '../domain/model/genderRepositoryModel';
 
 @Injectable()
 export class GenderService implements UseCaseGenderService {

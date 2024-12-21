@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { basicResponseApiOutput } from "src/common";
-import { GenderRepositoryModelObj } from "./character.type";
+import { GenderRepositoryModelObj } from "./genser.type";
 
 
 @ObjectType()

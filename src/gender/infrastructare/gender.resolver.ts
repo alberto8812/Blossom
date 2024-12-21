@@ -1,16 +1,16 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 
 import { Inject } from '@nestjs/common';
-import { UseCaseGenderService } from '../aplication/character-use-case.interface';
-import { GenderService } from '../aplication/character-use-case.service';
-import { GenderRepositoryModelObj } from './graphql/output/character.type';
-import { SaveGenderRepositoryModeInput, UpdateGenderRepositoryModeInput } from './graphql/input/create-character.input';
-import { GenderResponseObj, GendersResponseObj } from './graphql/output/character-response.type';
+import { UseCaseGenderService } from '../aplication/gender-use-case.interface';
+import { GenderService } from '../aplication/gender-use-case.service';
+import { GenderRepositoryModelObj } from './graphql/output/genser.type';
+import { SaveGenderRepositoryModeInput, UpdateGenderRepositoryModeInput } from './graphql/input/create-gender.input';
+import { GenderResponseObj, GendersResponseObj } from './graphql/output/gender-response.type';
 
 
 
 @Resolver(() => GenderRepositoryModelObj)
-export class CharacterResolver {
+export class GenderResolver {
   constructor(
     @Inject(GenderService) private genderService: UseCaseGenderService,
   ) { }

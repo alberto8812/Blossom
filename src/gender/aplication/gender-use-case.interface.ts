@@ -1,4 +1,4 @@
-import { GenderRepositoryModel, ISaveGenderRepositoryModel } from "../domain/model/characterRepositoryModel";
+import { GenderRepositoryModel, ISaveGenderRepositoryModel } from "../domain/model/genderRepositoryModel";
 
 
 export interface UseCaseGenderService {
