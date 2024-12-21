@@ -4,7 +4,7 @@ import { OriginRepositoryModelObj } from "./Origin.type";
 
 
 @ObjectType()
-export class CharactersResponseObj extends basicResponseApiOutput {
+export class OriginsResponseObj extends basicResponseApiOutput {
 
     @Field(() => [OriginRepositoryModelObj], { defaultValue: [] })
     data: OriginRepositoryModelObj[];
@@ -12,7 +12,7 @@ export class CharactersResponseObj extends basicResponseApiOutput {
 }
 
 @ObjectType()
-export class CharacterResponseObj extends basicResponseApiOutput {
+export class OriginResponseObj extends basicResponseApiOutput {
 
     @Field(() => OriginRepositoryModelObj, { nullable: true })
     data: OriginRepositoryModelObj;
