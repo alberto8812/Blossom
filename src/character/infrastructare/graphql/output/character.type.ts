@@ -3,7 +3,7 @@ import { ObjectType, Field, ID } from '@nestjs/graphql';
 @ObjectType()
 export class CharacterRepositoryModelObj {
     @Field(() => ID)
-    id: bigint;
+    id: string;
 
     @Field()
     name: string;

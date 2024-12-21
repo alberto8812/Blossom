@@ -9,9 +9,15 @@ type CharacterRepositoryModelObj {
   img: String!
 }
 
+type CharacterResponseObj {
+  message: String!
+  code: Int!
+  data: [CharacterRepositoryModelObj!]!
+}
+
 type Query {
-  get_all_character: [CharacterRepositoryModelObj!]!
-  get_one_character(id: String!): CharacterRepositoryModelObj!
+  get_all_character: CharacterResponseObj!
+  get_one_character(id: String!): CharacterResponseObj!
 }
 
 type Mutation {
