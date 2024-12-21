@@ -1,31 +1,34 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { CrudCharacterRepository } from "./characert-repository.interface";
+import { CrudGenderRepository } from "./characert-repository.interface";
 import { OrmBasicReportsRepository } from "src/db/domain/repository/charcters/orm-characters.repositor";
 import { IOrmCharacterRepository } from "src/db/domain/repository/charcters/orm-characters.repositor.interface";
-import { ISaveCharacterRepositoryModel, CharacterRepositoryModel } from "../model/characterRepositoryModel";
+import { GenderRepositoryModel, ISaveGenderRepositoryModel } from "../model/characterRepositoryModel";
+import { OrmSpeciesRepository } from "src/db/domain/repository/species/orm-species.repositor";
+import { IOrmSpeciesRepository } from "src/db/domain/repository/species/orm-species.repositor.interface";
+
 
 @Injectable()
-export class CharacterRepository implements CrudCharacterRepository {
+export class CharacterRepository implements CrudGenderRepository {
 
     constructor(
-        @Inject(OrmBasicReportsRepository)
-        private readonly ormBasicReportsRepository: IOrmCharacterRepository
+        @Inject(OrmSpeciesRepository)
+        private readonly ormSpeciesRepository: IOrmSpeciesRepository
     ) { }
-    createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<{ [key: string]: string; }> {
-        return this.ormBasicReportsRepository.saveCharacter(newCharacter);
+    createGender(newGender: ISaveGenderRepositoryModel): Promise<{ [key: string]: string; }> {
+        return this.ormSpeciesRepository.saveSpecies(newGender);
     }
-    getAllCharacter(): Promise<CharacterRepositoryModel[]> {
-        return this.ormBasicReportsRepository.getAllCharacters();
+    getAllGender(): Promise<GenderRepositoryModel[]> {
+        return this.ormSpeciesRepository.getAllSpecies();
     }
-    deleteCharacerById(employeeid: string): Promise<{ [key: string]: string; }> {
-        return this.ormBasicReportsRepository.deleteCharacter(employeeid);
+    deleteGenderById(genderid: string): Promise<{ [key: string]: string; }> {
+        return this.ormSpeciesRepository.deleteSpecies(genderid);
     }
-    getCharacterById(characterId: string): Promise<CharacterRepositoryModel> {
-        return this.ormBasicReportsRepository.getCharacterById(characterId);
+    getGenderById(genderid: string): Promise<GenderRepositoryModel> {
+        return this.ormSpeciesRepository.getSpeciesById(genderid);
     }
-    updateCharacter(updateCharcter: CharacterRepositoryModel): Promise<{ [key: string]: string; }> {
+    updateGender(updateCharcter: GenderRepositoryModel): Promise<{ [key: string]: string; }> {
         const { id, ...rest } = updateCharcter;
-        return this.ormBasicReportsRepository.updateCharacter(id, rest);
+        return this.ormSpeciesRepository.updateSpecies(id, rest);
     }
 
 

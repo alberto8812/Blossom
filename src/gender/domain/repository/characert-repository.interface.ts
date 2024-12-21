@@ -1,10 +1,10 @@
-import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from "../model/characterRepositoryModel";
+import { GenderRepositoryModel, ISaveGenderRepositoryModel } from "../model/characterRepositoryModel";
 
-export interface CrudCharacterRepository {
-    createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<{ [key: string]: string }>;
-    getAllCharacter(): Promise<CharacterRepositoryModel[]>;
-    deleteCharacerById(employeeid: string): Promise<{ [key: string]: string }>;
-    getCharacterById(characterId: string): Promise<CharacterRepositoryModel>;
-    updateCharacter(updateCharcter: CharacterRepositoryModel): Promise<{ [key: string]: string }>;
+export interface CrudGenderRepository {
+    createGender(newGender: ISaveGenderRepositoryModel): Promise<{ [key: string]: string }>;
+    getAllGender(): Promise<GenderRepositoryModel[]>;
+    deleteGenderById(genderid: string): Promise<{ [key: string]: string }>;
+    getGenderById(genderid: string): Promise<GenderRepositoryModel>;
+    updateGender(updateGender: GenderRepositoryModel): Promise<{ [key: string]: string }>;
 }
 

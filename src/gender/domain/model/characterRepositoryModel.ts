@@ -1,9 +1,6 @@
-export interface CharacterRepositoryModel {
+export interface GenderRepositoryModel {
     id: string;
     name: string;
-    status: string;
-    img: string;
-    species: string;
 }
 
-export type ISaveCharacterRepositoryModel = Omit<CharacterRepositoryModel, 'id'>
+export type ISaveGenderRepositoryModel = Omit<GenderRepositoryModel, 'id'>
