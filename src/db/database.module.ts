@@ -6,10 +6,11 @@ import { envs } from 'src/config/env';
 import { characters, origins, species } from './domain/entities';
 import { OrmBasicReportsRepository } from './domain/repository/charcters/orm-characters.repositor';
 import { OrmOriginRepository } from './domain/repository/origin/orm-origin.repositor';
+import { OrmSpeciesRepository } from './domain/repository/species/orm-species.repositor';
 
 
 @Module({
-  providers: [OrmBasicReportsRepository, OrmOriginRepository],
+  providers: [OrmBasicReportsRepository, OrmOriginRepository, OrmSpeciesRepository],
   imports: [
     ConfigModule.forRoot(),
     SequelizeModule.forRootAsync({
@@ -29,6 +30,6 @@ import { OrmOriginRepository } from './domain/repository/origin/orm-origin.repos
     }),
     SequelizeModule.forFeature([characters, origins, species]),
   ],
-  exports: [OrmBasicReportsRepository, OrmOriginRepository],
+  exports: [OrmBasicReportsRepository, OrmOriginRepository, OrmSpeciesRepository],
 })
 export class DatabaseModule { }

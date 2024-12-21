@@ -1,6 +1,6 @@
 import { Column, Model, Table, DataType } from 'sequelize-typescript';
 
-@Table({ tableName: 'origins' })
+@Table({ tableName: 'species' })
 export class species extends Model<species> {
     @Column({
         type: DataType.UUID,

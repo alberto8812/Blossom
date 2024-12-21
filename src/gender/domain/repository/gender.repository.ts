@@ -1,7 +1,5 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { CrudGenderRepository } from "./gender-repository.interface";
-import { OrmBasicReportsRepository } from "src/db/domain/repository/charcters/orm-characters.repositor";
-import { IOrmCharacterRepository } from "src/db/domain/repository/charcters/orm-characters.repositor.interface";
 import { GenderRepositoryModel, ISaveGenderRepositoryModel } from "../model/genderRepositoryModel";
 import { OrmSpeciesRepository } from "src/db/domain/repository/species/orm-species.repositor";
 import { IOrmSpeciesRepository } from "src/db/domain/repository/species/orm-species.repositor.interface";
