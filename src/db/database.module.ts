@@ -7,10 +7,11 @@ import { characters, origins, species } from './domain/entities';
 import { OrmBasicReportsRepository } from './domain/repository/charcters/orm-characters.repositor';
 import { OrmOriginRepository } from './domain/repository/origin/orm-origin.repositor';
 import { OrmSpeciesRepository } from './domain/repository/species/orm-species.repositor';
+import { OrmSeedRepository } from './domain/repository/seed/orm-species.repositor';
 
 
 @Module({
-  providers: [OrmBasicReportsRepository, OrmOriginRepository, OrmSpeciesRepository],
+  providers: [OrmBasicReportsRepository, OrmOriginRepository, OrmSpeciesRepository, OrmSeedRepository],
   imports: [
     ConfigModule.forRoot(),
     SequelizeModule.forRootAsync({
@@ -30,6 +31,6 @@ import { OrmSpeciesRepository } from './domain/repository/species/orm-species.re
     }),
     SequelizeModule.forFeature([characters, origins, species]),
   ],
-  exports: [OrmBasicReportsRepository, OrmOriginRepository, OrmSpeciesRepository],
+  exports: [OrmBasicReportsRepository, OrmOriginRepository, OrmSpeciesRepository, OrmSeedRepository],
 })
 export class DatabaseModule { }
