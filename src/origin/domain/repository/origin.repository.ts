@@ -1,31 +1,32 @@
 import { Inject, Injectable } from "@nestjs/common";
+
 import { CrudOriginRepository } from "./origin-repository.interface";
-import { OrmBasicReportsRepository } from "src/db/domain/repository/charcters/orm-characters.repositor";
-import { IOrmCharacterRepository } from "src/db/domain/repository/charcters/orm-characters.repositor.interface";
 import { ISaveOriginRepositoryModel, OriginRepositoryModel } from "../model/OriginRepositoryModel";
+import { OrmOriginRepository } from "src/db/domain/repository/origin/orm-origin.repositor";
+import { IOrmOriginRepository } from "src/db/domain/repository/origin/orm-origin.repositor.interface";
 
 @Injectable()
 export class OriginRepository implements CrudOriginRepository {
 
     constructor(
-        @Inject(OrmBasicReportsRepository)
-        private readonly ormBasicReportsRepository: IOrmCharacterRepository
+        @Inject(OrmOriginRepository)
+        private readonly ormBasicReportsRepository: IOrmOriginRepository
     ) { }
-    createCharacter(newCharacter: ISaveOriginRepositoryModel): Promise<{ [key: string]: string; }> {
-        return this.ormBasicReportsRepository.saveCharacter(newCharacter);
+    createOrigin(newOrigin: ISaveOriginRepositoryModel): Promise<{ [key: string]: string; }> {
+        return this.ormBasicReportsRepository.saveOrigin(newOrigin);
     }
-    getAllCharacter(): Promise<OriginRepositoryModel[]> {
-        return this.ormBasicReportsRepository.getAllCharacters();
+    getAllOrigin(): Promise<OriginRepositoryModel[]> {
+        return this.ormBasicReportsRepository.getAllOrigin();
     }
-    deleteCharacerById(employeeid: string): Promise<{ [key: string]: string; }> {
-        return this.ormBasicReportsRepository.deleteCharacter(employeeid);
+    deleteOriginById(originId: string): Promise<{ [key: string]: string; }> {
+        return this.ormBasicReportsRepository.deleteOrigin(originId);
     }
-    getCharacterById(characterId: string): Promise<OriginRepositoryModel> {
-        return this.ormBasicReportsRepository.getCharacterById(characterId);
+    getOriginById(originId: string): Promise<OriginRepositoryModel> {
+        return this.ormBasicReportsRepository.getOriginById(originId);
     }
-    updateCharacter(updateCharcter: OriginRepositoryModel): Promise<{ [key: string]: string; }> {
-        const { id, ...rest } = updateCharcter;
-        return this.ormBasicReportsRepository.updateCharacter(id, rest);
+    updateOrigin(updateOrigin: OriginRepositoryModel): Promise<{ [key: string]: string; }> {
+        const { id, ...rest } = updateOrigin;
+        return this.ormBasicReportsRepository.updateOrigin(id, rest);
     }
 
 

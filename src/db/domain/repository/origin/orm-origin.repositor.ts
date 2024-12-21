@@ -10,7 +10,7 @@ import { IGetOriginRepositoryDto } from "../../dto/origin-repository.dto";
 
 
 @Injectable()
-export class OrmBasicReportsRepository implements IOrmOriginRepository {
+export class OrmOriginRepository implements IOrmOriginRepository {
     private readonly logger = new Logger('OrmBasicReportsRepository');
     constructor(
         @InjectModel(origins)

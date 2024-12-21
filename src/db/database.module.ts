@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { SequelizeModule } from '@nestjs/sequelize';
+
 import { envs } from 'src/config/env';
 import { characters, origins, species } from './domain/entities';
 import { OrmBasicReportsRepository } from './domain/repository/charcters/orm-characters.repositor';
+import { OrmOriginRepository } from './domain/repository/origin/orm-origin.repositor';
 
 
 @Module({
-  providers: [OrmBasicReportsRepository],
+  providers: [OrmBasicReportsRepository, OrmOriginRepository],
   imports: [
     ConfigModule.forRoot(),
     SequelizeModule.forRootAsync({
@@ -27,6 +29,6 @@ import { OrmBasicReportsRepository } from './domain/repository/charcters/orm-cha
     }),
     SequelizeModule.forFeature([characters, origins, species]),
   ],
-  exports: [OrmBasicReportsRepository],
+  exports: [OrmBasicReportsRepository, OrmOriginRepository],
 })
 export class DatabaseModule { }

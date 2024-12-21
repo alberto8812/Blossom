@@ -1,10 +1,10 @@
 import { OriginRepositoryModel, ISaveOriginRepositoryModel } from "../model/OriginRepositoryModel";
 
 export interface CrudOriginRepository {
-    createCharacter(newCharacter: ISaveOriginRepositoryModel): Promise<{ [key: string]: string }>;
-    getAllCharacter(): Promise<OriginRepositoryModel[]>;
-    deleteCharacerById(employeeid: string): Promise<{ [key: string]: string }>;
-    getCharacterById(characterId: string): Promise<OriginRepositoryModel>;
-    updateCharacter(updateCharcter: OriginRepositoryModel): Promise<{ [key: string]: string }>;
+    createOrigin(newOrigin: ISaveOriginRepositoryModel): Promise<{ [key: string]: string }>;
+    getAllOrigin(): Promise<OriginRepositoryModel[]>;
+    deleteOriginById(originId: string): Promise<{ [key: string]: string }>;
+    getOriginById(originId: string): Promise<OriginRepositoryModel>;
+    updateOrigin(updateOrigin: OriginRepositoryModel): Promise<{ [key: string]: string }>;
 }
 
