@@ -3,7 +3,8 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { CharacterModule } from './character/character.module';
 import { join } from 'path';
-import { DatabaseModule } from './shared/db/database.module';
+import { DatabaseModule } from './db/database.module';
+
 
 
 @Module({

@@ -3,9 +3,11 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { envs } from 'src/config/env';
 import { characters } from './domain/entities';
+import { OrmBasicReportsRepository } from './domain/repository/charcters/orm-characters.repositor';
 
 
 @Module({
+  providers: [OrmBasicReportsRepository],
   imports: [
     ConfigModule.forRoot(),
     SequelizeModule.forRootAsync({
@@ -23,6 +25,9 @@ import { characters } from './domain/entities';
         synchronize: true,  // Establece esto en `false` para producción
       }),
     }),
+    SequelizeModule.forFeature([characters]),
   ],
+  exports: [OrmBasicReportsRepository],
 })
+
 export class DatabaseModule { }
