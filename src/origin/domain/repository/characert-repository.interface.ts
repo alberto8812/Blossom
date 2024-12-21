@@ -1,4 +1,4 @@
-import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from "../model/characterRepositoryModel";
+import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from "../model/OriginRepositoryModel";
 
 export interface CrudCharacterRepository {
     createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<{ [key: string]: string }>;

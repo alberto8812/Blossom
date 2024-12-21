@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { IResponse, UseCaseCharacterService } from './character-use-case.interface';
 import { CharacterRepository } from '../domain/repository/character.repository';
 import { CrudCharacterRepository } from '../domain/repository/characert-repository.interface';
-import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from '../domain/model/characterRepositoryModel';
+import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from '../domain/model/OriginRepositoryModel';
 
 @Injectable()
 export class CharacterService implements UseCaseCharacterService {

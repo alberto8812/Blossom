@@ -2,7 +2,7 @@ import { Inject, Injectable } from "@nestjs/common";
 import { CrudCharacterRepository } from "./characert-repository.interface";
 import { OrmBasicReportsRepository } from "src/db/domain/repository/charcters/orm-characters.repositor";
 import { IOrmCharacterRepository } from "src/db/domain/repository/charcters/orm-characters.repositor.interface";
-import { ISaveCharacterRepositoryModel, CharacterRepositoryModel } from "../model/characterRepositoryModel";
+import { ISaveCharacterRepositoryModel, CharacterRepositoryModel } from "../model/OriginRepositoryModel";
 
 @Injectable()
 export class CharacterRepository implements CrudCharacterRepository {

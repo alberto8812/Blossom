@@ -1,12 +1,12 @@
-import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from "../domain/model/characterRepositoryModel";
+import { OriginRepositoryModel, ISaveOriginRepositoryModel } from "../domain/model/OriginRepositoryModel";
 
 
 export interface UseCaseCharacterService {
-  updateCharacterById(updateCharcter: CharacterRepositoryModel): Promise<any>;
-  createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<any>;
-  getAllCharacter(): Promise<IResponse<CharacterRepositoryModel>>;
-  deleteCharacerById(employeeid: string): Promise<IResponse<any>>;
-  getCharacterById(characterId): Promise<IResponse<CharacterRepositoryModel>>;
+  updateCharacterById(updateOrigin: OriginRepositoryModel): Promise<any>;
+  createCharacter(newOrigin: ISaveOriginRepositoryModel): Promise<any>;
+  getAllCharacter(): Promise<IResponse<ISaveOriginRepositoryModel>>;
+  deleteCharacerById(originId: string): Promise<IResponse<any>>;
+  getCharacterById(OriginId: string): Promise<IResponse<OriginRepositoryModel>>;
 }
 
 export interface IResponse<T> {
