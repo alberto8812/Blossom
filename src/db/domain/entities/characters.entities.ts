@@ -1,4 +1,6 @@
-import { Column, Model, Table, DataType } from 'sequelize-typescript';
+import { Column, Model, Table, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { origins } from './origin.entities';
+import { species } from './species.entities';
 
 @Table({ tableName: 'characters' })
 export class characters extends Model<characters> {
@@ -43,4 +45,23 @@ export class characters extends Model<characters> {
     })
     updatedAt: Date;
 
+    @ForeignKey(() => origins)
+    @Column({
+        type: DataType.UUID,
+        allowNull: true,
+    })
+    originId: string;
+
+    @BelongsTo(() => origins)
+    origin: origins;
+
+    @ForeignKey(() => species)
+    @Column({
+        type: DataType.UUID,
+        allowNull: true,
+    })
+    speciesId: string;
+
+    @BelongsTo(() => species)
+    specie: species;
 }

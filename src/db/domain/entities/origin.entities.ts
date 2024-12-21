@@ -1,4 +1,5 @@
-import { Column, Model, Table, DataType } from 'sequelize-typescript';
+import { Column, Model, Table, DataType, HasMany } from 'sequelize-typescript';
+import { characters } from './characters.entities';
 
 @Table({ tableName: 'origins' })
 export class origins extends Model<origins> {
@@ -26,4 +27,7 @@ export class origins extends Model<origins> {
     })
     updatedAt: Date;
 
+
+    @HasMany(() => characters)
+    characters: characters[];
 }

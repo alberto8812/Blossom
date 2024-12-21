@@ -1,4 +1,5 @@
-import { Column, Model, Table, DataType } from 'sequelize-typescript';
+import { Column, Model, Table, DataType, HasMany } from 'sequelize-typescript';
+import { characters } from './characters.entities';
 
 @Table({ tableName: 'species' })
 export class species extends Model<species> {
@@ -25,5 +26,8 @@ export class species extends Model<species> {
         defaultValue: DataType.NOW,
     })
     updatedAt: Date;
+
+    @HasMany(() => characters)
+    characters: characters[];
 
 }
