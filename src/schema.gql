@@ -10,17 +10,24 @@ type CharacterRepositoryModelObj {
 }
 
 type Query {
-  character(id: Int!): CharacterRepositoryModelObj!
+  character(id: String!): CharacterRepositoryModelObj!
 }
 
 type Mutation {
-  createCharacter(createCharacterInput: ISaveEmployesRepositoryModeInput!): CharacterRepositoryModelObj!
-  updateCharacter(updateCharacterInput: ISaveEmployesRepositoryModeInput!): CharacterRepositoryModelObj!
-  removeCharacter(id: Int!): CharacterRepositoryModelObj!
+  createCharacter(createCharacterInput: SaveCharacterRepositoryModeInput!): CharacterRepositoryModelObj!
+  updateCharacter(updateCharacterInput: UpdateCharacterRepositoryModeInput!): CharacterRepositoryModelObj!
+  removeCharacter(id: String!): CharacterRepositoryModelObj!
 }
 
-input ISaveEmployesRepositoryModeInput {
+input SaveCharacterRepositoryModeInput {
   name: String!
   status: String!
   img: String!
+}
+
+input UpdateCharacterRepositoryModeInput {
+  name: String!
+  status: String!
+  img: String!
+  id: String!
 }

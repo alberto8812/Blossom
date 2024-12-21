@@ -1,8 +1,8 @@
 export interface CharacterRepositoryModel {
-    id: bigint;
+    id: string;
     name: string;
     status: string;
     img: string;
 }
 
-export type ISaveEmployesRepositoryModel = Omit<CharacterRepositoryModel, 'id'>
+export type ISaveCharacterRepositoryModel = Omit<CharacterRepositoryModel, 'id'>

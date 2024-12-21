@@ -2,6 +2,7 @@ import { Inject, Injectable } from "@nestjs/common";
 import { CrudCharacterRepository } from "./characert-repository.interface";
 import { OrmBasicReportsRepository } from "src/db/domain/repository/charcters/orm-characters.repositor";
 import { IOrmCharacterRepository } from "src/db/domain/repository/charcters/orm-characters.repositor.interface";
+import { ISaveCharacterRepositoryModel, CharacterRepositoryModel } from "../model/characterRepositoryModel";
 
 @Injectable()
 export class CharacterRepository implements CrudCharacterRepository {
@@ -10,20 +11,22 @@ export class CharacterRepository implements CrudCharacterRepository {
         @Inject(OrmBasicReportsRepository)
         private readonly ormBasicReportsRepository: IOrmCharacterRepository
     ) { }
-    updateCharacterById(): Promise<any[]> {
-        throw new Error("Method not implemented.");
+    createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<{ [key: string]: string; }> {
+        return this.ormBasicReportsRepository.saveCharacter(newCharacter);
     }
-    createCharacter(newEmploye: any): Promise<any> {
-        throw new Error("Method not implemented.");
+    getAllCharacter(): Promise<CharacterRepositoryModel[]> {
+        return this.ormBasicReportsRepository.getAllCharacters();
     }
-    getAllCharacter(): Promise<any> {
-        throw new Error("Method not implemented.");
+    deleteCharacerById(employeeid: string): Promise<{ [key: string]: string; }> {
+        return this.ormBasicReportsRepository.deleteCharacter(employeeid);
     }
-    deleteCharacerById(employeeid: number): Promise<any> {
-        throw new Error("Method not implemented.");
+    getCharacterById(characterId: string): Promise<CharacterRepositoryModel> {
+        return this.ormBasicReportsRepository.getCharacterById(characterId);
     }
-    getCharacterById(): Promise<any> {
-        throw new Error("Method not implemented.");
+    updateCharacter(updateCharcter: CharacterRepositoryModel): Promise<{ [key: string]: string; }> {
+        const { id, ...rest } = updateCharcter;
+        return this.ormBasicReportsRepository.updateCharacter(id, rest);
     }
+
 
 }

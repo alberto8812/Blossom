@@ -6,5 +6,5 @@ export interface ICharactersRepositoryDto {
 }
 
 export interface IGetCharctersRepositoryDto extends ICharactersRepositoryDto {
-    id: number
+    id: string
 }

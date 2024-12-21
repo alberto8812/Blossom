@@ -3,11 +3,13 @@ import { Column, Model, Table, DataType } from 'sequelize-typescript';
 @Table({ tableName: 'characters' })
 export class characters extends Model<characters> {
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.UUID,
         primaryKey: true,
-        autoIncrement: true,
+        defaultValue: DataType.UUIDV4, // Esto genera automáticamente un UUID v4
     })
-    id: number;
+    id: string;
+
+
 
     @Column({
         type: DataType.STRING(255),

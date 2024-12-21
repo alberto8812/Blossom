@@ -4,7 +4,7 @@ import { Inject } from '@nestjs/common';
 import { UseCaseCharacterService } from '../aplication/character-use-case.interface';
 import { CharacterService } from '../aplication/character-use-case.service';
 import { CharacterRepositoryModelObj } from './graphql/output/character.type';
-import { ISaveEmployesRepositoryModeInput } from './graphql/input/create-character.input';
+import { SaveCharacterRepositoryModeInput, UpdateCharacterRepositoryModeInput } from './graphql/input/create-character.input';
 
 
 
@@ -15,8 +15,8 @@ export class CharacterResolver {
   ) { }
 
   @Mutation(() => CharacterRepositoryModelObj)
-  createCharacter(@Args('createCharacterInput') createCharacterInput: ISaveEmployesRepositoryModeInput) {
-    return this.characterService.createCharacter('');
+  createCharacter(@Args('createCharacterInput') createCharacterInput: SaveCharacterRepositoryModeInput) {
+    return this.characterService.createCharacter(createCharacterInput);
   }
 
   @Query(() => [CharacterRepositoryModelObj], { name: 'character' })
@@ -25,17 +25,17 @@ export class CharacterResolver {
   }
 
   @Query(() => CharacterRepositoryModelObj, { name: 'character' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.characterService.getCharacterById();
+  findOne(@Args('id', { type: () => String }) id: string) {
+    return this.characterService.getCharacterById(id);
   }
 
   @Mutation(() => CharacterRepositoryModelObj)
-  updateCharacter(@Args('updateCharacterInput') updateCharacterInput: ISaveEmployesRepositoryModeInput) {
-    return this.characterService.updateCharacterById();
+  updateCharacter(@Args('updateCharacterInput') updateCharacterInput: UpdateCharacterRepositoryModeInput) {
+    return this.characterService.updateCharacterById(updateCharacterInput);
   }
 
   @Mutation(() => CharacterRepositoryModelObj)
-  removeCharacter(@Args('id', { type: () => Int }) id: number) {
+  removeCharacter(@Args('id', { type: () => String }) id: string) {
     return this.characterService.deleteCharacerById(id);
   }
 }

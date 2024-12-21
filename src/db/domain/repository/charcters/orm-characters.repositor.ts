@@ -15,23 +15,33 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
         @InjectModel(characters)
         private readonly charactersModel: typeof characters,
     ) { }
-
-
     async getAllCharacters(): Promise<IGetCharctersRepositoryDto[]> {
-        return [];
+        return await this.charactersModel.findAll();
     }
-    getCharacterById(characterid: number): Promise<IGetCharctersRepositoryDto> {
-        throw new Error("Method not implemented.");
+    getCharacterById(characterid: string): Promise<IGetCharctersRepositoryDto> {
+        return this.charactersModel.findByPk(characterid);
     }
-    saveCharacter(newProduct: ICharactersRepositoryDto): Promise<void> {
-        throw new Error("Method not implemented.");
+    async saveCharacter(newProduct: ICharactersRepositoryDto): Promise<{ [key: string]: string; }> {
+        const resp = await this.charactersModel.create(newProduct);
+        return {
+            message: "Character created"
+        }
     }
-    updateCharacter(characterid: number, newProduct: ICharactersRepositoryDto): Promise<void> {
-        throw new Error("Method not implemented.");
+    async updateCharacter(characterid: string, newProduct: ICharactersRepositoryDto): Promise<{ [key: string]: string; }> {
+        const resp = await this.charactersModel.update(newProduct, { where: { id: characterid } });
+        return {
+            message: "Character updated"
+
+        }
     }
-    deleteCharacter(characterid: number): Promise<void> {
-        throw new Error("Method not implemented.");
+    async deleteCharacter(characterid: string): Promise<{ [key: string]: string; }> {
+        await this.charactersModel.destroy({ where: { id: characterid } });
+        return {
+            message: "Character deleted"
+        }
     }
+
+
 
 
 }

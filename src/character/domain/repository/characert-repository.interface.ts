@@ -1,7 +1,10 @@
+import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from "../model/characterRepositoryModel";
+
 export interface CrudCharacterRepository {
-    updateCharacterById(): Promise<any[]>;
-    createCharacter(newEmploye: any): Promise<any>;
-    getAllCharacter(): Promise<any>;
-    deleteCharacerById(employeeid: number): Promise<any>;
-    getCharacterById(): Promise<any>;
+    createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<{ [key: string]: string }>;
+    getAllCharacter(): Promise<CharacterRepositoryModel[]>;
+    deleteCharacerById(employeeid: string): Promise<{ [key: string]: string }>;
+    getCharacterById(characterId: string): Promise<CharacterRepositoryModel>;
+    updateCharacter(updateCharcter: CharacterRepositoryModel): Promise<{ [key: string]: string }>;
 }
+

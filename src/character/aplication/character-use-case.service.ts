@@ -1,7 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { UseCaseCharacterService } from './character-use-case.interface';
+import { IResponse, UseCaseCharacterService } from './character-use-case.interface';
 import { CharacterRepository } from '../domain/repository/character.repository';
 import { CrudCharacterRepository } from '../domain/repository/characert-repository.interface';
+import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from '../domain/model/characterRepositoryModel';
 
 @Injectable()
 export class CharacterService implements UseCaseCharacterService {
@@ -10,20 +11,46 @@ export class CharacterService implements UseCaseCharacterService {
   ) {
 
   }
-  updateCharacterById(): Promise<any[]> {
-    throw new Error('Method not implemented.');
+  async updateCharacterById(updateCharcter: CharacterRepositoryModel): Promise<any> {
+    const character = await this.characterRepository.updateCharacter(updateCharcter);
+    return {
+      message: 'Character updated',
+      code: 200,
+      data: character
+    }
   }
-  createCharacter(newEmploye: any): Promise<any> {
-    throw new Error('Method not implemented.');
+  async createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<any> {
+    const character = await this.characterRepository.createCharacter(newCharacter);
+    return {
+      message: 'Character created',
+      code: 200,
+      data: character
+    }
   }
-  getAllCharacter(): Promise<any> {
-    throw new Error('Method not implemented.');
+  async getAllCharacter(): Promise<IResponse<CharacterRepositoryModel>> {
+    const character = await this.characterRepository.getAllCharacter();
+    return {
+      message: 'Character list',
+      code: 200,
+      data: character
+    }
   }
-  deleteCharacerById(employeeid: number): Promise<any> {
-    throw new Error('Method not implemented.');
+  async deleteCharacerById(employeeid: string): Promise<IResponse<any>> {
+    const character = await this.characterRepository.deleteCharacerById(employeeid);
+    return {
+      message: 'Character deleted',
+      code: 200,
+      data: character
+    }
   }
-  getCharacterById(): Promise<any> {
-    throw new Error('Method not implemented.');
+  async getCharacterById(characterId: string): Promise<IResponse<CharacterRepositoryModel>> {
+    const character = await this.characterRepository.getCharacterById(characterId);
+    return {
+      message: 'Character found',
+      code: 200,
+      data: character
+    }
   }
+
 
 }
