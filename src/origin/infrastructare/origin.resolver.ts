@@ -1,8 +1,8 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 
 import { Inject } from '@nestjs/common';
-import { UseCaseCharacterService } from '../aplication/character-use-case.interface';
-import { CharacterService } from '../aplication/character-use-case.service';
+import { UseCaseCharacterService } from '../aplication/origin-use-case.interface';
+import { Service } from '../aplication/origin-use-case.service';
 import { OriginRepositoryModelObj } from './graphql/output/Origin.type';
 import { SaveOriginRepositoryModeInput, UpdateOriginRepositoryModeInput } from './graphql/input/create-origin.input';
 import { OriginResponseObj, OriginsResponseObj } from './graphql/output/origin-response.type';
