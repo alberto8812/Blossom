@@ -1,6 +1,6 @@
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
 @InputType()
-export class SaveCharacterRepositoryModeInput {
+export class SaveGenderRepositoryModeInput {
     @Field()
     name: string;
 
@@ -15,7 +15,7 @@ export class SaveCharacterRepositoryModeInput {
 }
 
 @InputType()
-export class UpdateCharacterRepositoryModeInput extends SaveCharacterRepositoryModeInput {
+export class UpdateGenderRepositoryModeInput extends SaveGenderRepositoryModeInput {
     @Field()
     id: string;
 }

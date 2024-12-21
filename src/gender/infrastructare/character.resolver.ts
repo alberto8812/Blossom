@@ -1,43 +1,42 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 
 import { Inject } from '@nestjs/common';
-import { UseCaseCharacterService } from '../aplication/character-use-case.interface';
-import { CharacterService } from '../aplication/character-use-case.service';
-import { CharacterRepositoryModelObj } from './graphql/output/character.type';
-import { SaveCharacterRepositoryModeInput, UpdateCharacterRepositoryModeInput } from './graphql/input/create-character.input';
+import { UseCaseGenderService } from '../aplication/character-use-case.interface';
+import { GenderService } from '../aplication/character-use-case.service';
+import { GenderRepositoryModelObj } from './graphql/output/character.type';
+import { SaveGenderRepositoryModeInput, UpdateGenderRepositoryModeInput } from './graphql/input/create-character.input';
 import { CharacterResponseObj, CharactersResponseObj } from './graphql/output/character-response.type';
 
 
 
-@Resolver(() => CharacterRepositoryModelObj)
+@Resolver(() => GenderRepositoryModelObj)
 export class CharacterResolver {
   constructor(
-    @Inject(CharacterService) private characterService: UseCaseCharacterService,
+    @Inject(GenderService) private genderService: UseCaseGenderService,
   ) { }
 
-  @Mutation(() => CharacterRepositoryModelObj, { name: 'createCharacter' })
-  createCharacter(@Args('createCharacterInput') createCharacterInput: SaveCharacterRepositoryModeInput) {
-    return this.characterService.createCharacter(createCharacterInput);
+  @Mutation(() => GenderRepositoryModelObj, { name: 'createGender' })
+  createCharacter(@Args('createCharacterInput') createCharacterInput: SaveGenderRepositoryModeInput) {
+    return this.genderService.createGender(createCharacterInput);
   }
 
-  @Query(() => CharactersResponseObj, { name: 'get_all_character' })
+  @Query(() => CharactersResponseObj, { name: 'get_all_gender' })
   findAll() {
-    return this.characterService.getAllCharacter();
+    return this.genderService.getAllGender();
   }
 
-  @Query(() => CharacterResponseObj, { name: 'get_one_character' })
+  @Query(() => CharacterResponseObj, { name: 'get_one_genser' })
   findOne(@Args('id', { type: () => String }) id: string) {
-    console.log(id);
-    return this.characterService.getCharacterById(id);
+    return this.genderService.getGenderById(id);
   }
 
-  @Mutation(() => CharacterRepositoryModelObj, { name: 'updateCharacter' })
-  updateCharacter(@Args('updateCharacterInput') updateCharacterInput: UpdateCharacterRepositoryModeInput) {
-    return this.characterService.updateCharacterById(updateCharacterInput);
+  @Mutation(() => GenderRepositoryModelObj, { name: 'updateGender' })
+  updateCharacter(@Args('updateGenderInput') updateGenderInput: UpdateGenderRepositoryModeInput) {
+    return this.genderService.updateGenderById(updateGenderInput);
   }
 
-  @Mutation(() => CharacterRepositoryModelObj, { name: 'removeCharacter' })
+  @Mutation(() => GenderRepositoryModelObj, { name: 'removeGender' })
   removeCharacter(@Args('id', { type: () => String }) id: string) {
-    return this.characterService.deleteCharacerById(id);
+    return this.genderService.deleteGenderById(id);
   }
 }

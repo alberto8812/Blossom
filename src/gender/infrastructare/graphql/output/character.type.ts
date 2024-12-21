@@ -1,19 +1,10 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 
 @ObjectType()
-export class CharacterRepositoryModelObj {
+export class GenderRepositoryModelObj {
     @Field(() => ID)
     id: string;
 
     @Field()
     name: string;
-
-    @Field()
-    status: string;
-
-    @Field()
-    species: string;
-
-    @Field()
-    img: string;
 }
