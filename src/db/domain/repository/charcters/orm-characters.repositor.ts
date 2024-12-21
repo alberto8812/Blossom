@@ -1,7 +1,7 @@
 
 
 
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, Logger } from "@nestjs/common";
 import { IOrmCharacterRepository } from "./orm-characters.repositor.interface";
 import { IGetCharctersRepositoryDto, ICharactersRepositoryDto } from "../../dto";
 import { InjectModel } from '@nestjs/sequelize';
@@ -10,13 +10,21 @@ import { characters } from "../../entities";
 
 @Injectable()
 export class OrmBasicReportsRepository implements IOrmCharacterRepository {
-
+    private readonly logger = new Logger('OrmBasicReportsRepository');
     constructor(
         @InjectModel(characters)
         private readonly charactersModel: typeof characters,
     ) { }
     async getAllCharacters(): Promise<IGetCharctersRepositoryDto[]> {
-        return await this.charactersModel.findAll();
+        try {
+            const resp = await this.charactersModel.findAll({ raw: true });
+            return resp;
+
+        } catch (error) {
+            this.logger.error(error);
+            throw new BadRequestException("Error getting characters");
+
+        }
     }
     getCharacterById(characterid: string): Promise<IGetCharctersRepositoryDto> {
         return this.charactersModel.findByPk(characterid);
@@ -29,10 +37,8 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
                 message: "Character created"
             }
         } catch (error) {
-            console.log(error);
-            return {
-                message: "Character not created"
-            }
+            this.logger.error(error);
+            throw new BadRequestException("Error creating character");
         }
     }
     async updateCharacter(characterid: string, newProduct: ICharactersRepositoryDto): Promise<{ [key: string]: string; }> {
