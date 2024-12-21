@@ -22,15 +22,36 @@ type CharacterResponseObj {
   data: CharacterRepositoryModelObj
 }
 
+type OriginRepositoryModelObj {
+  id: ID!
+  name: String!
+}
+
+type OriginsResponseObj {
+  message: String!
+  code: Int!
+  data: [OriginRepositoryModelObj!]!
+}
+
+type OriginResponseObj {
+  message: String!
+  code: Int!
+  data: OriginRepositoryModelObj
+}
+
 type Query {
   get_all_character: CharactersResponseObj!
   get_one_character(id: String!): CharacterResponseObj!
+  get_all_origin: OriginsResponseObj!
+  get_one_origin(id: String!): OriginResponseObj!
 }
 
 type Mutation {
   createCharacter(createCharacterInput: SaveCharacterRepositoryModeInput!): CharacterRepositoryModelObj!
   updateCharacter(updateCharacterInput: UpdateCharacterRepositoryModeInput!): CharacterRepositoryModelObj!
-  removeCharacter(id: String!): CharacterRepositoryModelObj!
+  removeCharacter(id: String!): OriginRepositoryModelObj!
+  createOrigin(createOriginInput: SaveOriginRepositoryModeInput!): OriginRepositoryModelObj!
+  updateOrigin(updateOriginInput: UpdateOriginRepositoryModeInput!): OriginRepositoryModelObj!
 }
 
 input SaveCharacterRepositoryModeInput {
@@ -45,5 +66,14 @@ input UpdateCharacterRepositoryModeInput {
   status: String!
   img: String!
   species: String!
+  id: String!
+}
+
+input SaveOriginRepositoryModeInput {
+  name: String!
+}
+
+input UpdateOriginRepositoryModeInput {
+  name: String!
   id: String!
 }

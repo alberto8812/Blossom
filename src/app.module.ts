@@ -1,10 +1,13 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { CharacterModule } from './character/character.module';
 import { join } from 'path';
+
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { GraphQLModule } from '@nestjs/graphql';
+
+import { CharacterModule } from './character/character.module';
 import { DatabaseModule } from './db/database.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { OriginModule } from './origin/origin.module';
 
 
 
@@ -20,6 +23,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
     }),
     DatabaseModule,
     CharacterModule,
+    OriginModule,
   ],
   controllers: [],
   providers: [],
