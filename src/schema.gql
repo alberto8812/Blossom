@@ -1,0 +1,26 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CharacterRepositoryModelObj {
+  id: ID!
+  name: String!
+  status: String!
+  img: String!
+}
+
+type Query {
+  character(id: Int!): CharacterRepositoryModelObj!
+}
+
+type Mutation {
+  createCharacter(createCharacterInput: ISaveEmployesRepositoryModeInput!): CharacterRepositoryModelObj!
+  updateCharacter(updateCharacterInput: ISaveEmployesRepositoryModeInput!): CharacterRepositoryModelObj!
+  removeCharacter(id: Int!): CharacterRepositoryModelObj!
+}
+
+input ISaveEmployesRepositoryModeInput {
+  name: String!
+  status: String!
+  img: String!
+}
