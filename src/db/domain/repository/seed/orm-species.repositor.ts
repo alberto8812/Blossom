@@ -21,20 +21,23 @@ export class OrmSeedRepository implements IOrmSeedRepository {
         @InjectModel(characters)
         private readonly charactersModel: typeof characters,
     ) { }
-    createManyorigin(origins: IOriginRepositoryDto[]): Promise<IGetOriginRepositoryDto[]> {
-        return this.originsModel.bulkCreate(origins)
+    async createManyorigin(origins: IOriginRepositoryDto[]): Promise<IGetOriginRepositoryDto[]> {
+        const resp = await this.originsModel.bulkCreate(origins)
+        return resp.map((origin) => origin.dataValues)
     }
-    createManySpecies(species: ISpeciesRepositoryDto[]): Promise<IGetSpeciesRepositoryDto[]> {
-        return this.speciesModel.bulkCreate(species)
+    async createManySpecies(species: ISpeciesRepositoryDto[]): Promise<IGetSpeciesRepositoryDto[]> {
+        const resp = await this.speciesModel.bulkCreate(species)
+        return resp.map((specie) => specie.dataValues)
     }
-    createManyCharacters(characters: ICharactersRepositoryDto[]): Promise<IGetCharctersRepositoryDto[]> {
-        return this.charactersModel.bulkCreate(characters)
+    async createManyCharacters(characters: ICharactersRepositoryDto[]): Promise<IGetCharctersRepositoryDto[]> {
+        const resp = await this.charactersModel.bulkCreate(characters)
+        return resp.map((character) => character.dataValues);
     }
-    getOriginByName(name: string): Promise<IGetOriginRepositoryDto> {
-        return this.originsModel.findOne({ where: { name }, raw: true })
+    async getOriginByName(name: string): Promise<IGetOriginRepositoryDto> {
+        return await this.originsModel.findOne({ where: { name }, raw: true })
     }
-    getSpeciesById(name: string): Promise<IGetSpeciesRepositoryDto> {
-        return this.speciesModel.findOne({ where: { name }, raw: true })
+    async getSpeciesById(name: string): Promise<IGetSpeciesRepositoryDto> {
+        return await this.speciesModel.findOne({ where: { name }, raw: true })
     }
 
 
