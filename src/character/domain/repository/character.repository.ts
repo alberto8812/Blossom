@@ -3,6 +3,7 @@ import { CrudCharacterRepository } from "./characert-repository.interface";
 import { OrmBasicReportsRepository } from "src/db/domain/repository/charcters/orm-characters.repositor";
 import { IOrmCharacterRepository } from "src/db/domain/repository/charcters/orm-characters.repositor.interface";
 import { ISaveCharacterRepositoryModel, CharacterRepositoryModel } from "../model/characterRepositoryModel";
+import { SearchFilterCharacter } from "../interface/searchFilterCharacer.interface";
 
 @Injectable()
 export class CharacterRepository implements CrudCharacterRepository {
@@ -14,8 +15,8 @@ export class CharacterRepository implements CrudCharacterRepository {
     createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<{ [key: string]: string; }> {
         return this.ormBasicReportsRepository.saveCharacter(newCharacter);
     }
-    getAllCharacter(): Promise<CharacterRepositoryModel[]> {
-        return this.ormBasicReportsRepository.getAllCharacters();
+    getAllCharacter(searchfilter: SearchFilterCharacter): Promise<CharacterRepositoryModel[]> {
+        return this.ormBasicReportsRepository.getAllCharacters(searchfilter);
     }
     deleteCharacerById(employeeid: string): Promise<{ [key: string]: string; }> {
         return this.ormBasicReportsRepository.deleteCharacter(employeeid);

@@ -3,6 +3,7 @@ import { IResponse, UseCaseCharacterService } from './character-use-case.interfa
 import { CharacterRepository } from '../domain/repository/character.repository';
 import { CrudCharacterRepository } from '../domain/repository/characert-repository.interface';
 import { CharacterRepositoryModel, ISaveCharacterRepositoryModel } from '../domain/model/characterRepositoryModel';
+import { SearchFilterCharacter } from '../domain/interface/searchFilterCharacer.interface';
 
 @Injectable()
 export class CharacterService implements UseCaseCharacterService {
@@ -27,8 +28,8 @@ export class CharacterService implements UseCaseCharacterService {
       data: character
     }
   }
-  async getAllCharacter(): Promise<IResponse<CharacterRepositoryModel>> {
-    const character = await this.characterRepository.getAllCharacter();
+  async getAllCharacter(searchFilter: SearchFilterCharacter): Promise<IResponse<CharacterRepositoryModel>> {
+    const character = await this.characterRepository.getAllCharacter(searchFilter);
     return {
       message: 'Character list',
       code: 200,

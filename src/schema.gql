@@ -59,7 +59,7 @@ type GenderResponseObj {
 }
 
 type Query {
-  get_all_character: CharactersResponseObj!
+  get_all_character(name: String, status: String, originId: String, speciesId: String): CharactersResponseObj!
   get_one_character(id: String!): CharacterResponseObj!
   get_all_origin: OriginsResponseObj!
   get_one_origin(id: String!): OriginResponseObj!

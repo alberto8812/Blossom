@@ -6,6 +6,7 @@ import { CharacterService } from '../aplication/character-use-case.service';
 import { CharacterRepositoryModelObj } from './graphql/output/character.type';
 import { SaveCharacterRepositoryModeInput, UpdateCharacterRepositoryModeInput } from './graphql/input/create-character.input';
 import { CharacterResponseObj, CharactersResponseObj } from './graphql/output/character-response.type';
+import { SearchCharacterArgs } from './graphql/args/search.characters';
 
 
 
@@ -21,8 +22,10 @@ export class CharacterResolver {
   }
 
   @Query(() => CharactersResponseObj, { name: 'get_all_character' })
-  findAll() {
-    return this.characterService.getAllCharacter();
+  findAll(
+    @Args() searchCharacterArgs: SearchCharacterArgs
+  ) {
+    return this.characterService.getAllCharacter(searchCharacterArgs);
   }
 
   @Query(() => CharacterResponseObj, { name: 'get_one_character' })

@@ -6,6 +6,8 @@ import { IOrmCharacterRepository } from "./orm-characters.repositor.interface";
 import { IGetCharctersRepositoryDto, ICharactersRepositoryDto } from "../../dto";
 import { InjectModel } from '@nestjs/sequelize';
 import { characters } from "../../entities";
+import { SearchFilterCharacter } from "../../interface/searchfilter.character.interface";
+import { Op } from "sequelize";
 
 
 @Injectable()
@@ -15,9 +17,24 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
         @InjectModel(characters)
         private readonly charactersModel: typeof characters,
     ) { }
-    async getAllCharacters(): Promise<IGetCharctersRepositoryDto[]> {
+    async getAllCharacters(searchFilter: SearchFilterCharacter): Promise<IGetCharctersRepositoryDto[]> {
         try {
-            const resp = await this.charactersModel.findAll({ raw: true });
+
+            const characterFilter = Object.fromEntries(
+                Object.entries(searchFilter)
+                    .filter(([_, value]) => value !== undefined)
+                    .map(([key, value]) => {
+                        if (['name', 'status'].includes(key)) {
+                            return [key, { [Op.like]: `%${value}%` }];
+                        }
+                        return [key, value];
+                    })
+            );
+            const resp = await this.charactersModel.findAll({
+                where: { ...characterFilter },
+                include: [{ all: true }],
+                raw: true
+            });
             return resp;
 
         } catch (error) {
