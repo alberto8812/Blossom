@@ -34,7 +34,6 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
                 where: { ...characterFilter },
                 include: [{ all: true }],
             });
-            console.log(resp);
             return resp;
 
         } catch (error) {
@@ -45,7 +44,7 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
     }
     async getCharacterById(characterid: string): Promise<IGetCharctersRepositoryDto> {
         try {
-            const resp = await this.charactersModel.findByPk(characterid, { raw: true });
+            const resp = await this.charactersModel.findByPk(characterid, { include: [{ all: true }] });
             return resp;
         } catch (error) {
             this.logger.error(error);
