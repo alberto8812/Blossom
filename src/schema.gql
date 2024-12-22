@@ -2,25 +2,126 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type GenderRepositoryModelObj {
+  id: ID!
+  name: String!
+}
+
+type OriginRepositoryModelObj {
+  id: ID!
+  name: String!
+}
+
 type CharacterRepositoryModelObj {
   id: ID!
   name: String!
   status: String!
+  species: String!
   img: String!
+  originId: String!
+  speciesId: String!
+  origin: OriginRepositoryModelObj!
+  specie: GenderRepositoryModelObj!
+}
+
+type CharactersResponseObj {
+  message: String!
+  code: Int!
+  data: [CharacterRepositoryModelObj!]!
+}
+
+type CharacterResponseObj {
+  message: String!
+  code: Int!
+  data: CharacterRepositoryModelObj
+}
+
+type OriginsResponseObj {
+  message: String!
+  code: Int!
+  data: [OriginRepositoryModelObj!]!
+}
+
+type OriginResponseObj {
+  message: String!
+  code: Int!
+  data: OriginRepositoryModelObj
+}
+
+type GendersResponseObj {
+  message: String!
+  code: Int!
+  data: [GenderRepositoryModelObj!]!
+}
+
+type GenderResponseObj {
+  message: String!
+  code: Int!
+  data: GenderRepositoryModelObj
 }
 
 type Query {
-  character(id: Int!): CharacterRepositoryModelObj!
+  get_all_character(name: String, status: String, originId: String, speciesId: String): CharactersResponseObj!
+  get_one_character(id: String!): CharacterResponseObj!
+  get_all_origin: OriginsResponseObj!
+  get_one_origin(id: String!): OriginResponseObj!
+  get_all_gender: GendersResponseObj!
+  get_one_genser(id: String!): GenderResponseObj!
 }
 
 type Mutation {
-  createCharacter(createCharacterInput: ISaveEmployesRepositoryModeInput!): CharacterRepositoryModelObj!
-  updateCharacter(updateCharacterInput: ISaveEmployesRepositoryModeInput!): CharacterRepositoryModelObj!
-  removeCharacter(id: Int!): CharacterRepositoryModelObj!
+  createCharacter(createCharacterInput: SaveCharacterRepositoryModeInput!): CharacterRepositoryModelObj!
+  updateCharacter(updateCharacterInput: UpdateCharacterRepositoryModeInput!): CharacterRepositoryModelObj!
+  removeCharacter(id: String!): OriginRepositoryModelObj!
+  createOrigin(createOriginInput: SaveOriginRepositoryModeInput!): OriginRepositoryModelObj!
+  updateOrigin(updateOriginInput: UpdateOriginRepositoryModeInput!): OriginRepositoryModelObj!
+  createGender(createCharacterInput: SaveGenderRepositoryModeInput!): GenderRepositoryModelObj!
+  updateGender(updateGenderInput: UpdateGenderRepositoryModeInput!): GenderRepositoryModelObj!
+  removeGender(id: String!): GenderRepositoryModelObj!
+
+  """Ejecuta la construccion de la base de datos"""
+  executeSeed: Boolean!
 }
 
-input ISaveEmployesRepositoryModeInput {
+input SaveCharacterRepositoryModeInput {
   name: String!
   status: String!
   img: String!
+  species: String!
+  originId: String!
+  speciesId: String!
+}
+
+input UpdateCharacterRepositoryModeInput {
+  name: String!
+  status: String!
+  img: String!
+  species: String!
+  originId: String!
+  speciesId: String!
+  id: String!
+}
+
+input SaveOriginRepositoryModeInput {
+  name: String!
+}
+
+input UpdateOriginRepositoryModeInput {
+  name: String!
+  id: String!
+}
+
+input SaveGenderRepositoryModeInput {
+  name: String!
+  status: String!
+  img: String!
+  species: String!
+}
+
+input UpdateGenderRepositoryModeInput {
+  name: String!
+  status: String!
+  img: String!
+  species: String!
+  id: String!
 }
