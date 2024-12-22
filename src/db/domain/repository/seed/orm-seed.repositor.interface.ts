@@ -10,6 +10,7 @@ export interface IOrmSeedRepository {
     createManyCharacters(characters: ICharactersRepositoryDto[]): Promise<IGetCharctersRepositoryDto[]>;
     getOriginByName(name: string): Promise<IGetOriginRepositoryDto>;
     getSpeciesById(name: string): Promise<IGetSpeciesRepositoryDto>;
+    deleteAll(): Promise<void>;
 
 
 }

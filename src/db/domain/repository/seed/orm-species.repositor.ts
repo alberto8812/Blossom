@@ -21,6 +21,12 @@ export class OrmSeedRepository implements IOrmSeedRepository {
         @InjectModel(characters)
         private readonly charactersModel: typeof characters,
     ) { }
+    async deleteAll(): Promise<void> {
+        await this.originsModel.destroy({ where: {} });
+        await this.speciesModel.destroy({ where: {} });
+        await this.charactersModel.destroy({ where: {} });
+
+    }
     async createManyorigin(origins: IOriginRepositoryDto[]): Promise<IGetOriginRepositoryDto[]> {
         const resp = await this.originsModel.bulkCreate(origins)
         return resp.map((origin) => origin.dataValues)

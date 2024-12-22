@@ -20,6 +20,8 @@ export class SeedService {
     }
 
     async executeSeed(): Promise<boolean> {
+        await this.deleteAll();
+
         const url = `${envs.apiUrl}/character`
 
         const charactersData = await this.httpServiceAdapter.get<CharactersAPIData>(url);
@@ -77,5 +79,9 @@ export class SeedService {
 
     async createCharacters(characters: ICharactersRepositoryDto[]): Promise<IGetCharctersRepositoryDto[]> {
         return await this.ormSeedRepository.createManyCharacters(characters);
+    }
+
+    async deleteAll(): Promise<void> {
+        return await this.ormSeedRepository.deleteAll();
     }
 }
