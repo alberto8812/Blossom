@@ -1,3 +1,6 @@
+import { IGetOriginRepositoryDto } from "./origin-repository.dto";
+import { IGetSpeciesRepositoryDto } from "./species-repository.dto";
+
 export interface ICharactersRepositoryDto {
     name: string
     status: string
@@ -10,4 +13,6 @@ export interface ICharactersRepositoryDto {
 
 export interface IGetCharctersRepositoryDto extends ICharactersRepositoryDto {
     id: string
+    origin?: IGetOriginRepositoryDto;
+    specie?: IGetSpeciesRepositoryDto;
 }

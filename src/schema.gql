@@ -2,6 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type GenderRepositoryModelObj {
+  id: ID!
+  name: String!
+}
+
+type OriginRepositoryModelObj {
+  id: ID!
+  name: String!
+}
+
 type CharacterRepositoryModelObj {
   id: ID!
   name: String!
@@ -10,6 +20,8 @@ type CharacterRepositoryModelObj {
   img: String!
   originId: String!
   speciesId: String!
+  origin: OriginRepositoryModelObj!
+  specie: GenderRepositoryModelObj!
 }
 
 type CharactersResponseObj {
@@ -24,11 +36,6 @@ type CharacterResponseObj {
   data: CharacterRepositoryModelObj
 }
 
-type OriginRepositoryModelObj {
-  id: ID!
-  name: String!
-}
-
 type OriginsResponseObj {
   message: String!
   code: Int!
@@ -39,11 +46,6 @@ type OriginResponseObj {
   message: String!
   code: Int!
   data: OriginRepositoryModelObj
-}
-
-type GenderRepositoryModelObj {
-  id: ID!
-  name: String!
 }
 
 type GendersResponseObj {

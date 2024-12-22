@@ -1,5 +1,8 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 
+import { GenderRepositoryModelObj } from 'src/gender/infrastructare/graphql/output/genser.type';
+import { OriginRepositoryModelObj } from 'src/origin/infrastructare/graphql/output/Origin.type';
+
 @ObjectType()
 export class CharacterRepositoryModelObj {
     @Field(() => ID)
@@ -22,4 +25,10 @@ export class CharacterRepositoryModelObj {
 
     @Field()
     speciesId: string;
+
+    @Field()
+    origin: OriginRepositoryModelObj
+
+    @Field()
+    specie: GenderRepositoryModelObj
 }

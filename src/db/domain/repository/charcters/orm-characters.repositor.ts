@@ -33,8 +33,8 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
             const resp = await this.charactersModel.findAll({
                 where: { ...characterFilter },
                 include: [{ all: true }],
-                raw: true
             });
+            console.log(resp);
             return resp;
 
         } catch (error) {
