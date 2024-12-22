@@ -27,7 +27,6 @@ export class OriginResolver {
 
   @Query(() => OriginResponseObj, { name: 'get_one_origin' })
   findOne(@Args('id', { type: () => String }) id: string) {
-    console.log(id);
     return this.OriginService.getOriginById(id);
   }
 

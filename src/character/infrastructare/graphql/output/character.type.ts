@@ -16,4 +16,10 @@ export class CharacterRepositoryModelObj {
 
     @Field()
     img: string;
+
+    @Field()
+    originId: string;
+
+    @Field()
+    speciesId: string;
 }

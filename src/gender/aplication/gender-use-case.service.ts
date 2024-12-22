@@ -45,7 +45,6 @@ export class GenderService implements UseCaseGenderService {
   }
   async getGenderById(characterId: string): Promise<IResponse<GenderRepositoryModel>> {
     const character = await this.GenderRepository.getGenderById(characterId);
-    console.log(character, 'character');
     return {
       message: 'Character found',
       code: 200,

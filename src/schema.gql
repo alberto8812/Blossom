@@ -8,6 +8,8 @@ type CharacterRepositoryModelObj {
   status: String!
   species: String!
   img: String!
+  originId: String!
+  speciesId: String!
 }
 
 type CharactersResponseObj {
@@ -84,6 +86,8 @@ input SaveCharacterRepositoryModeInput {
   status: String!
   img: String!
   species: String!
+  originId: String!
+  speciesId: String!
 }
 
 input UpdateCharacterRepositoryModeInput {
@@ -91,6 +95,8 @@ input UpdateCharacterRepositoryModeInput {
   status: String!
   img: String!
   species: String!
+  originId: String!
+  speciesId: String!
   id: String!
 }
 

@@ -27,7 +27,6 @@ export class CharacterResolver {
 
   @Query(() => CharacterResponseObj, { name: 'get_one_character' })
   findOne(@Args('id', { type: () => String }) id: string) {
-    console.log(id);
     return this.characterService.getCharacterById(id);
   }
 

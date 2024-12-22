@@ -12,6 +12,12 @@ export class SaveCharacterRepositoryModeInput {
 
     @Field()
     species: string;
+
+    @Field()
+    originId: string;
+
+    @Field()
+    speciesId: string;
 }
 
 @InputType()

@@ -6,7 +6,7 @@ export interface UseCaseCharacterService {
   createCharacter(newCharacter: ISaveCharacterRepositoryModel): Promise<any>;
   getAllCharacter(): Promise<IResponse<CharacterRepositoryModel>>;
   deleteCharacerById(employeeid: string): Promise<IResponse<any>>;
-  getCharacterById(characterId): Promise<IResponse<CharacterRepositoryModel>>;
+  getCharacterById(characterId: string): Promise<IResponse<CharacterRepositoryModel>>;
 }
 
 export interface IResponse<T> {

@@ -3,6 +3,8 @@ export interface ICharactersRepositoryDto {
     status: string
     img: string
     species: string
+    originId: string;
+    speciesId: string;
 
 }
 

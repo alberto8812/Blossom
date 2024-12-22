@@ -37,7 +37,6 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
 
     }
     async saveCharacter(newProduct: ICharactersRepositoryDto): Promise<{ [key: string]: string; }> {
-        console.log(newProduct);
         try {
             const resp = await this.charactersModel.create(newProduct);
             return {

@@ -45,7 +45,6 @@ export class CharacterService implements UseCaseCharacterService {
   }
   async getCharacterById(characterId: string): Promise<IResponse<CharacterRepositoryModel>> {
     const character = await this.characterRepository.getCharacterById(characterId);
-    console.log(character, 'character');
     return {
       message: 'Character found',
       code: 200,

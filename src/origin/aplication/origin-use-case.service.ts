@@ -45,7 +45,6 @@ export class OriginService implements UseCaseOriginService {
   }
   async getOriginById(OriginId: string): Promise<IResponse<OriginRepositoryModel>> {
     const character = await this.originRepository.getOriginById(OriginId);
-    console.log(character, 'character');
     return {
       message: 'Character found',
       code: 200,
