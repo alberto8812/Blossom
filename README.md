@@ -19,3 +19,32 @@
 ```
 https://github.com/alberto8812/Blossom-front.git
 ```
+
+8. relation db
+```
++-----------------+     1:N     +-----------------------+
+|     origins     |------------>|      characters      |
++-----------------+             +-----------------------+
+| id (PK)         |             | id (PK)              |
+| name            |             | name                 |
+| createdAt       |             | status               |
+| updatedAt       |             | img                  |
++-----------------+             | species              |
+                                | createdAt            |
+                                | updatedAt            |
+                                | originId (FK)        |
+                                | speciesId (FK)       |
+                                +-----------------------+
+                                        ^
+                                        |
+                                        | N:1
+                                        |
+                                  +-----------------+
+                                  |    species      |
+                                  +-----------------+
+                                  | id (PK)         |
+                                  | name            |
+                                  | createdAt       |
+                                  | updatedAt       |
+                                  +-----------------+
+```
