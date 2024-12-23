@@ -25,7 +25,7 @@ export class OrmBasicReportsRepository implements IOrmCharacterRepository {
                     .filter(([_, value]) => value !== undefined)
                     .map(([key, value]) => {
                         if (['name', 'status'].includes(key)) {
-                            return [key, { [Op.like]: `%${value}%` }];
+                            return [key, { [Op.iLike]: `%${value}%` }];
                         }
                         return [key, value];
                     })

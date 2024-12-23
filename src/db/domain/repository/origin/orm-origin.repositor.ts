@@ -49,17 +49,34 @@ export class OrmOriginRepository implements IOrmOriginRepository {
         }
     }
     async updateOrigin(originId: string, newOrigin: IGetOriginRepositoryDto): Promise<{ [key: string]: string; }> {
-        const resp = await this.originsModel.update(newOrigin, { where: { id: originId } });
-        return {
-            message: "Character updated"
-
+        try {
+            const origin = await this.originsModel.findByPk(originId);
+            if (!origin) {
+                throw new BadRequestException("Character not found");
+            }
+            return {
+                message: "Character not found"
+            }
+        } catch (error) {
+            this.logger.error(error);
+            throw new BadRequestException("Error updating character");
         }
     }
     async deleteOrigin(originId: string): Promise<{ [key: string]: string; }> {
-        await this.originsModel.destroy({ where: { id: originId } });
-        return {
-            message: "Character deleted"
+        try {
+            const origin = await this.originsModel.findByPk(originId);
+            if (!origin) {
+                throw new BadRequestException("Character not found");
+            }
+            return {
+                message: "Character not found"
+            }
+
+        } catch (error) {
+            this.logger.error(error);
+            throw new BadRequestException("Error deleting character");
         }
+
     }
 
 
