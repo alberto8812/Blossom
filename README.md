@@ -15,3 +15,7 @@
    mutation Mutation {
      executeSeed
    }
+7. Front URL
+```
+https://github.com/alberto8812/Blossom-front.git
+```
